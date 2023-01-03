@@ -80,10 +80,11 @@ MainWindow:
 
                         
                     MDLabel:
-                        id: journalBox
+                        id: questionBox
                         text: ""
                         bold: True
-                        
+                    
+
                         
             MDBottomNavigationItem:
                 name: "screen 3"
@@ -101,13 +102,27 @@ MainWindow:
                         Rectangle:
                             pos: self.pos
                             size: self.size
+                    
+                    MDTextField:
+                        id: note_text
+                        hint_text: "Write Journal entry here"                    
 
- 
-                    MDLabel:
-                        id: questionsBox
-                        text: ""
-                        bold: True
-                        
+                    MDRaisedButton:
+                        text: "Add Note"
+                        on_release:
+                            root.add_note()
+
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: root.height * 0.5
+                        do_scroll_x: False
+
+                        MDList:
+                            id: notes_list
+                            size_hint_y: None
+                            height: self.minimum_height
+                                                            
             MDBottomNavigationItem:
                 name: "screen 4"
                 text: "About"
