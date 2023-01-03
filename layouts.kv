@@ -1,0 +1,125 @@
+#################################### Main Window Layout #############################
+MainWindow:
+
+    MDScreen:
+        size: root.width, root.height
+
+        MDBottomNavigation:
+
+            MDBottomNavigationItem:
+                name: "screen 1"
+                text: "Date"
+                icon: "calendar"
+
+                MDGridLayout:
+                    cols: 1
+                    
+                    canvas.before:
+                        Color:
+                            rgb: (211, 211, 211)
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    
+                    
+                    MDList:
+                        ThreeLineListItem:
+                            text: "Stronger Together Journal"
+                            secondary_text: "Handpicked Bible verses for the year"
+                            tertiary_text: "Dedicated journal section for a lifetime of reflection"
+    
+
+                    MDScrollView:
+                        
+                        MDList:
+                            
+                            TwoLineIconListItem:
+                                
+                                text: "JAN 1"
+                                secondary_text: "Passage: Matt 1-2"
+            
+                                IconLeftWidget:
+                                    icon: "arrow-collapse-right"
+                                    on_release: root.jan1()
+                                    
+                            TwoLineIconListItem:
+                                text: "JAN 8"
+                                secondary_text: "Passage: Matt 3-4"
+                            
+                                IconLeftWidget:
+                                    icon: "arrow-collapse-right"
+                                    on_release: root.jan8()
+                                    
+                            
+                            TwoLineIconListItem:
+                                text: "JAN 15"
+                                secondary_text: "Passage: Matt 5-6"
+                        
+                                IconLeftWidget:
+                                    icon: "arrow-collapse-right"                       
+                                    on_release: 
+                                        root.jan15()
+
+
+            MDBottomNavigationItem:
+                name: "screen 2"
+                text: "Journal"
+                icon: "book-edit-outline"
+
+
+                MDGridLayout:
+                    cols: 1
+                    size: root.width, root.height
+
+                    canvas.before:
+                        Color:
+                            rgb: (211, 211, 211)
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                        
+                    MDLabel:
+                        id: journalBox
+                        text: ""
+                        bold: True
+                        
+                        
+            MDBottomNavigationItem:
+                name: "screen 3"
+                text: "Reflection"
+                icon: "chat-question-outline"
+
+
+                MDGridLayout:
+                    cols: 1
+                    size: root.width, root.height
+
+                    canvas.before:
+                        Color:
+                            rgb: (211, 211, 211)
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+ 
+                    MDLabel:
+                        id: questionsBox
+                        text: ""
+                        bold: True
+                        
+            MDBottomNavigationItem:
+                name: "screen 4"
+                text: "About"
+                icon: "information-outline"
+
+                MDGridLayout:
+                    cols: 1
+                    
+                    canvas.before:
+                        Color:
+                            rgb: (211, 211, 211)
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    
