@@ -103,14 +103,17 @@ MainWindow:
                             pos: self.pos
                             size: self.size
                     
-                    MDTextField:
-                        id: note_text
-                        hint_text: "Write Journal entry here"                    
-
                     MDRaisedButton:
                         text: "Add Note"
                         on_release:
                             root.add_note()
+
+                    MDTextField:
+                        id: note_text
+                        multiline: True
+                        mode: "fill"
+                        icon_right: "book-edit-outline"
+                        hint_text: "Journal entry"                    
 
 
                     ScrollView:
@@ -118,10 +121,9 @@ MainWindow:
                         height: root.height * 0.5
                         do_scroll_x: False
 
-                        MDList:
+                        MDLabel:
                             id: notes_list
-                            size_hint_y: None
-                            height: self.minimum_height
+                            
                                                             
             MDBottomNavigationItem:
                 name: "screen 4"

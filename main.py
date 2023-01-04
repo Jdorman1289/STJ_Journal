@@ -8,6 +8,8 @@ import webbrowser
 Window.size = 640, 640
 
 
+saved_list = []
+
 class MainWindow(MDWidget):
 
     def jan1(self):
@@ -22,9 +24,13 @@ class MainWindow(MDWidget):
     def add_note(self):
         note_text = self.ids['note_text']
         notes_list = self.ids['notes_list']
-            
-        notes_list.add_widget(MDLabel(text=note_text.text), index=len(notes_list.children))
+        saved_list.append(note_text.text)
+
+        display_text = str(saved_list[slice(0,len(saved_list))]).strip("][")
+
+        notes_list.text = display_text
         note_text.text = ""
+
 
 class STJ(MDApp):
     def build(self):
