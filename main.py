@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.card import MDCard
 import webbrowser
 
 Window.size = 640, 640
@@ -32,18 +33,22 @@ class MainWindow(MDWidget):
         title = title_input.text
         body = body_input.text
         
-        # Create a new box layout with vertical orientation and add it to the card
+        new_card = MDCard()
         box_layout = MDBoxLayout(orientation='vertical')
-        entry_card.add_widget(box_layout)
+
+        entry_card.add_widget(new_card)
+        new_card.add_widget(box_layout)
 
         # Add the title and body as labels to the box layout
-        box_layout.add_widget(MDLabel(text=title, font_style='H6'))
+        box_layout.add_widget(MDLabel(text=title, font_style='H6'))   
         box_layout.add_widget(MDLabel(text=body))
+
+        # Set the elevation of the card
+        new_card.elevation = 2
 
         # Clear the input fields
         title_input.text = ''
         body_input.text = ''
-
 
 class STJ(MDApp):
     def build(self):

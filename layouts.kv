@@ -88,7 +88,6 @@ MainWindow:
                         
             MDBottomNavigationItem:
                 name: "screen 3"
-
                 text: "Journal"
                 icon: "book-edit-outline"
 
@@ -107,27 +106,34 @@ MainWindow:
                         orientation: 'vertical'
                         padding: 10
                         spacing: 10
-                        
-                        MDCard:
-                            id: entry_card  
+                        size_hint_y: 1
+                        height: dp(60)
+                        pos_hint: {'top': 1}
 
-                        BoxLayout:
-                            orientation: 'horizontal'
-                            spacing: 10
+                        MDTextField:
+                            id: title_input
+                            hint_text: "Title"
+                            size_hint_y: None
+                            height: dp(30)
 
+                        MDTextField:
+                            id: body_input
+                            hint_text: "Body"
+                            size_hint_y: None
+                            height: dp(30)
+                            multiline: True
 
-                            MDTextField:
-                                id: title_input
-                                hint_text: 'Title'
+                        MDRectangleFlatButton:
+                            text: "Save"
+                            size_hint_y: None
+                            height: dp(30)
+                            on_release: root.save_entry()
 
-                            MDTextField:
-                                id: body_input
-                                hint_text: 'Body'
-                                multiline: True
-
-                            MDRectangleFlatButton:
-                                text: 'Save Entry'
-                                on_release: root.save_entry()
+                    BoxLayout:
+                        orientation: 'vertical'
+                        padding: 10
+                        spacing: 10
+                        id: entry_card  
 
  
             MDBottomNavigationItem:
