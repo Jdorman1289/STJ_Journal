@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Journal App</title>
+  <style>
+    /* Add some style to the app */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .entry-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .entry {
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .entry-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .entry-body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Journal App</h1>
+    <form>
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title"><br>
+      <label for="body">Body:</label><br>
+      <textarea id="body" name="body"></textarea><br>
+      <button type="submit">Save Entry</button>
+    </form> 
+    <h2>Entries:</h2>
+    <ul class="entry-list">
+      <!-- Here we will dynamically add entries using JavaScript -->
+    </ul>
+  </div>
+  <script>
+// Get references to the form elements and buttons
+const titleInput = document.querySelector('#title');
+const bodyInput = document.querySelector('#body');
+const form = document.querySelector('form');
+const sortButton = document.querySelector('#sort-button');
+const searchInput = document.querySelector('#search');
+const clearButton = document.querySelector('#clear-button');
+const entryList = document.querySelector('.entry-list');
+
+// An array to store the entries
+let entries = [];
+
+// A function to create an entry element from an entry object
+function createEntryElement(entry) {
+  const entryElement = document.createElement('li');
+  entryElement.classList.add('entry');
+  entryElement.innerHTML = `
+    <h3 class="entry-title">${entry.title}</h3>
+    <p class="entry-body">${entry.body}</p>
+    <button class="remove-button">Remove</button>
+  `;
+  entryElement.querySelector('.remove-button').addEventListener('click', event => {
+    removeEntry(entry);
+  });
+  return entryElement;
+}
+
+// A function to add an entry to the list
+function addEntryToList(entry) {
+  const entryElement = createEntryElement(entry);
+  entryList.appendChild(entryElement);
+}
+
+// A function to remove an entry
+function removeEntry(entry) {
+  const index = entries.indexOf(entry);
+  if (index >= 0) {
+    entries.splice(index, 1);
+    displayEntries();
+  }
+}
+
+// A function to sort entries by title
+function sortEntriesByTitle() {
+  entries.sort((a, b) => a.title.localeCompare(b.title));
+  displayEntries();
+}
+
+// A function to search entries by title
+function searchEntries() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredEntries = entries.filter(entry => entry.title.toLowerCase().includes(searchTerm));
+  displayEntries(filteredEntries);
+}
+
+// A function to clear all entries
+function clearEntries() {
+  entries = [];
+  displayEntries();
+}
+
+// A function to display a list of entries
+function displayEntries(entryArray = entries) {
+  entryList.innerHTML = '';
+  entryArray.forEach(addEntryToList);
+}
+
+// Save an entry when the form is submitted
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const title = titleInput.value;
+  const body = bodyInput.value;
+  if (title && body) {
+    const entry = { title, body };
+    entries.push(entry);
+    displayEntries();
+    form.reset();
+  }
+});
+
+// Sort the entries when the sort button is clicked
+sortButton.addEventListener('click', sortEntriesByTitle);
+
+// Search the entries as the search input is changed
+searchInput.addEventListener('input', searchEntries);
+
+// Clear the entries when the clear button is clicked
+clearButton.addEventListener('click', clearEntries);
+
+// Display any existing entries
+displayEntries();
+
+
+
+  </script>
+</body>
+</html>
