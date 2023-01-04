@@ -3,6 +3,7 @@ from kivymd.uix.widget import MDWidget
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivymd.uix.label import MDLabel
+from kivymd.uix.boxlayout import MDBoxLayout
 import webbrowser
 
 Window.size = 640, 640
@@ -21,15 +22,27 @@ class MainWindow(MDWidget):
     def jan15(self):
         webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=008QpD")
 
-    def add_note(self):
-        note_text = self.ids['note_text']
-        notes_list = self.ids['notes_list']
-        saved_list.append(note_text.text)
+    def save_entry(self):
+        # Get the input fields and card
+        title_input = self.ids['title_input']
+        body_input = self.ids['body_input']
+        entry_card = self.ids['entry_card']
 
-        display_text = str(saved_list[slice(0,len(saved_list))]).strip("][")
+        # Get the values from the input fields
+        title = title_input.text
+        body = body_input.text
+        
+        # Create a new box layout with vertical orientation and add it to the card
+        box_layout = MDBoxLayout(orientation='vertical')
+        entry_card.add_widget(box_layout)
 
-        notes_list.text = display_text
-        note_text.text = ""
+        # Add the title and body as labels to the box layout
+        box_layout.add_widget(MDLabel(text=title, font_style='H6'))
+        box_layout.add_widget(MDLabel(text=body))
+
+        # Clear the input fields
+        title_input.text = ''
+        body_input.text = ''
 
 
 class STJ(MDApp):

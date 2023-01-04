@@ -103,28 +103,33 @@ MainWindow:
                             pos: self.pos
                             size: self.size
                     
-                    MDRaisedButton:
-                        text: "Add Note"
-                        on_release:
-                            root.add_note()
+                    BoxLayout:
+                        orientation: 'vertical'
+                        padding: 10
+                        spacing: 10
+                        
+                        MDCard:
+                            id: entry_card  
 
-                    MDTextField:
-                        id: note_text
-                        multiline: True
-                        mode: "fill"
-                        icon_right: "book-edit-outline"
-                        hint_text: "Journal entry"                    
+                        BoxLayout:
+                            orientation: 'horizontal'
+                            spacing: 10
 
 
-                    ScrollView:
-                        size_hint_y: None
-                        height: root.height * 0.5
-                        do_scroll_x: False
+                            MDTextField:
+                                id: title_input
+                                hint_text: 'Title'
 
-                        MDLabel:
-                            id: notes_list
-                            
-                                                            
+                            MDTextField:
+                                id: body_input
+                                hint_text: 'Body'
+                                multiline: True
+
+                            MDRectangleFlatButton:
+                                text: 'Save Entry'
+                                on_release: root.save_entry()
+
+ 
             MDBottomNavigationItem:
                 name: "screen 4"
                 text: "About"
