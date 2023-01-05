@@ -127,7 +127,7 @@ WindowManager:
 
         canvas.before:
             Color:
-            	rgb: (.1608, .1961, .2549)
+            	rgb: (.18, .18, .18)
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -139,8 +139,16 @@ WindowManager:
             left_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')]]
             right_action_items: [['file-settings-outline'],['menu', lambda x: nav_drawer.set_state("open")]]
         
-        ScrollView:
-    
+        MDTextField:
+            size_hint_x: 1
+            size_hint_y: 1
+            mode: "fill"
+            hint_text: "Write Journal Note Here:"
+            fill_color_focus: (.18, .18, .18)
+            text_color_focus: "white"
+            text_color_normal: "white"
+            multiline: True
+            pos_hint: {"center_x": .5, "center_y": .5}
     
     
     
