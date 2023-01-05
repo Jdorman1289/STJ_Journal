@@ -7,8 +7,6 @@ import webbrowser
 Window.size = 640, 640
 
 
-saved_list = []
-
 class MainWindow(Screen):
 
     def jan1(self):
