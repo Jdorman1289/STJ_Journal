@@ -94,9 +94,10 @@ WindowManager:
                     bold: True
                 
 
-                MDRaisedButton:
+                MDFloatingActionButton:
                     id: note_button
-                    text: "Open Journal"
+                    icon: "book-cross"
+                    elevation: 0
                     on_release: 
                         app.root.current = "notes_window" 
                         root.manager.transition.direction = "right"
@@ -148,6 +149,7 @@ WindowManager:
             text_color_focus: "white"
             text_color_normal: "white"
             multiline: True
+            icon_right: "book-edit"
             pos_hint: {"center_x": .5, "center_y": .5}
     
     
