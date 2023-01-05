@@ -30,14 +30,10 @@ WindowManager:
                         pos: self.pos
                         size: self.size
                 
-                
-                MDList:
-                    ThreeLineListItem:
-                        text: "Stronger Together Journal"
-                        secondary_text: "Handpicked Bible verses for the year"
-                        tertiary_text: "Dedicated journal section for a lifetime of reflection"
-
-
+                MDTopAppBar:
+                    pos_hint: {'top': 1, 'y': 0}
+                    title: "Scripture for the year"
+     
                 MDScrollView:
                     
                     MDList:
@@ -87,6 +83,17 @@ WindowManager:
                         pos: self.pos
                         size: self.size
 
+
+                MDTopAppBar:
+                    pos_hint: {'top': 1, 'y': 0}
+                    title: "Questions to reflect on during study"
+
+                MDLabel:
+                    id: questionBox
+                    text: "Reflection Questions Here"
+                    bold: True
+                
+
                 MDRaisedButton:
                     id: note_button
                     text: "Open Journal"
@@ -94,12 +101,6 @@ WindowManager:
                         app.root.current = "notes_window" 
                         root.manager.transition.direction = "right"
                     
-                MDLabel:
-                    id: questionBox
-                    text: "Reflection Questions"
-                    bold: True
-                
-
                     
         MDBottomNavigationItem:
             name: "screen 3"
@@ -135,9 +136,8 @@ WindowManager:
         MDTopAppBar:
             title: "Stronger Together Journal"
             pos_hint: {'top': 1, 'y': 0}
-            left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
-            right_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')],['file-settings-outline']]
-        
+            left_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')]]
+            right_action_items: [['file-settings-outline'],['menu', lambda x: nav_drawer.set_state("open")]]
         
         ScrollView:
     
