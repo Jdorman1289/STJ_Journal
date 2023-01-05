@@ -1,153 +1,112 @@
+
+################################### All Windows #####################################
+
+WindowManager:
+    MainWindow:
+    NotesWindow:
+        NavBar:
+
+
+
+
 #################################### Main Window Layout #############################
-MainWindow:
+<MainWindow>
+    name: "main_window"
 
-    MDScreen:
-        size: root.width, root.height
+    MDBottomNavigation:
 
-        MDBottomNavigation:
+        MDBottomNavigationItem:
+            name: "screen 1"
+            text: "Date"
+            icon: "calendar"
 
-            MDBottomNavigationItem:
-                name: "screen 1"
-                text: "Date"
-                icon: "calendar"
+            MDGridLayout:
+                cols: 1
+                
+                canvas.before:
+                    Color:
+                        rgb: (211, 211, 211)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                
+                
+                MDList:
+                    ThreeLineListItem:
+                        text: "Stronger Together Journal"
+                        secondary_text: "Handpicked Bible verses for the year"
+                        tertiary_text: "Dedicated journal section for a lifetime of reflection"
 
-                MDGridLayout:
-                    cols: 1
-                    
-                    canvas.before:
-                        Color:
-                            rgb: (211, 211, 211)
-                        Rectangle:
-                            pos: self.pos
-                            size: self.size
-                    
+
+                MDScrollView:
                     
                     MDList:
-                        ThreeLineListItem:
-                            text: "Stronger Together Journal"
-                            secondary_text: "Handpicked Bible verses for the year"
-                            tertiary_text: "Dedicated journal section for a lifetime of reflection"
-    
-
-                    MDScrollView:
                         
-                        MDList:
+                        TwoLineIconListItem:
                             
-                            TwoLineIconListItem:
+                            text: "JAN 1"
+                            secondary_text: "Passage: Matt 1-2"
+        
+                            IconLeftWidget:
+                                icon: "arrow-collapse-right"
+                                on_release: root.jan1()
                                 
-                                text: "JAN 1"
-                                secondary_text: "Passage: Matt 1-2"
-            
-                                IconLeftWidget:
-                                    icon: "arrow-collapse-right"
-                                    on_release: root.jan1()
-                                    
-                            TwoLineIconListItem:
-                                text: "JAN 8"
-                                secondary_text: "Passage: Matt 3-4"
-                            
-                                IconLeftWidget:
-                                    icon: "arrow-collapse-right"
-                                    on_release: root.jan8()
-                                    
-                            
-                            TwoLineIconListItem:
-                                text: "JAN 15"
-                                secondary_text: "Passage: Matt 5-6"
+                        TwoLineIconListItem:
+                            text: "JAN 8"
+                            secondary_text: "Passage: Matt 3-4"
                         
-                                IconLeftWidget:
-                                    icon: "arrow-collapse-right"                       
-                                    on_release: 
-                                        root.jan15()
-
-
-            MDBottomNavigationItem:
-                name: "screen 2"
-                text: "Reflection"
-                icon: "chat-question-outline"
-
-
-                MDGridLayout:
-                    cols: 1
-                    size: root.width, root.height
-
-                    canvas.before:
-                        Color:
-                            rgb: (211, 211, 211)
-                        Rectangle:
-                            pos: self.pos
-                            size: self.size
-
+                            IconLeftWidget:
+                                icon: "arrow-collapse-right"
+                                on_release: root.jan8()
+                                
                         
-                    MDLabel:
-                        id: questionBox
-                        text: ""
-                        bold: True
+                        TwoLineIconListItem:
+                            text: "JAN 15"
+                            secondary_text: "Passage: Matt 5-6"
                     
+                            IconLeftWidget:
+                                icon: "arrow-collapse-right"                       
+                                on_release: 
+                                    root.jan15()
 
-                        
-            MDBottomNavigationItem:
-                name: "screen 3"
-                text: "Journal"
-                icon: "book-edit-outline"
 
-                MDGridLayout:
-                    cols: 1
-                    size: root.width, root.height
+        MDBottomNavigationItem:
+            name: "screen 2"
+            text: "Reflection"
+            icon: "chat-question-outline"
 
-                    canvas.before:
-                        Color:
-                            rgb: (211, 211, 211)
-                        Rectangle:
-                            pos: self.pos
-                            size: self.size
+
+            MDGridLayout:
+                cols: 1
+                size: root.width, root.height
+
+                canvas.before:
+                    Color:
+                        rgb: (211, 211, 211)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
                     
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        spacing: 10
-                        size_hint_y: 1
-                        height: dp(60)
-                        pos_hint: {'top': 1}
+                MDLabel:
+                    id: questionBox
+                    text: "Reflection Questions"
+                    bold: True
+                
 
-                        MDTextField:
-                            id: title_input
-                            hint_text: "Title"
-                            size_hint_y: None
-                            height: dp(30)
-
-                        MDTextField:
-                            id: body_input
-                            hint_text: "Body"
-                            size_hint_y: None
-                            height: dp(30)
-                            multiline: True
-
-                        MDRectangleFlatButton:
-                            text: "Save"
-                            size_hint_y: None
-                            height: dp(30)
-                            on_release: root.save_entry()
-
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: 10
-                        spacing: 10
-                        id: entry_card  
-
- 
-            MDBottomNavigationItem:
-                name: "screen 4"
-                text: "About"
-                icon: "information-outline"
-
-                MDGridLayout:
-                    cols: 1
                     
-                    canvas.before:
-                        Color:
-                            rgb: (211, 211, 211)
-                        Rectangle:
-                            pos: self.pos
-                            size: self.size
+        MDBottomNavigationItem:
+            name: "screen 3"
+            text: "About"
+            icon: "information-outline"
+
+            MDGridLayout:
+                cols: 1
+                
+                canvas.before:
+                    Color:
+                        rgb: (211, 211, 211)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
                     
