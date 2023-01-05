@@ -22,7 +22,11 @@ class MainWindow(Screen):
 
 
 class NotesWindow(Screen):
-    pass
+
+    def add_note(self):
+        #to be added
+        pass
+
 
 class NavBar(Screen):
     pass
@@ -32,8 +36,8 @@ class WindowManager(ScreenManager):
 
 class STJ(MDApp):
     def build(self):
-        self.theme_cls.theme_style = "Light"
-        self.theme_cls.primary_palette = "Blue"
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "DeepPurple"
         return Builder.load_file('layouts.kv')
 
 # on launch start main window class

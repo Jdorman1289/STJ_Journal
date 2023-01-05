@@ -25,7 +25,7 @@ WindowManager:
                 
                 canvas.before:
                     Color:
-                        rgb: (211, 211, 211)
+                        rgb: (.18, .18, .18)
                     Rectangle:
                         pos: self.pos
                         size: self.size
@@ -82,11 +82,17 @@ WindowManager:
 
                 canvas.before:
                     Color:
-                        rgb: (211, 211, 211)
+                        rgb: (.18, .18, .18)
                     Rectangle:
                         pos: self.pos
                         size: self.size
 
+                MDRaisedButton:
+                    id: note_button
+                    text: "Journal Notes"
+                    on_release: 
+                        app.root.current = "notes_window" 
+                        root.manager.transition.direction = "left"
                     
                 MDLabel:
                     id: questionBox
@@ -105,8 +111,62 @@ WindowManager:
                 
                 canvas.before:
                     Color:
-                        rgb: (211, 211, 211)
+                        rgb: (.18, .18, .18)
                     Rectangle:
                         pos: self.pos
                         size: self.size
-                    
+
+#################################### Notes Window Layout #############################
+<NotesWindow>
+    name: "notes_window"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        canvas.before:
+            Color:
+            	rgb: (.1608, .1961, .2549)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+        MDTopAppBar:
+            title: "Stronger Together Journal"
+            pos_hint: {'top': 1, 'y': 0}
+            left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+            right_action_items: [['keyboard-backspace'],['file-settings-outline']]
+        
+        MDRaisedButton:
+            id: back_button
+            text: "Back"
+            on_release: 
+                app.root.current = "main_window" 
+                root.manager.transition.direction = "right"
+        
+        ScrollView:
+    
+    
+    
+    
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        orientation: "vertical"
+        
+        MDList:
+        	OneLineListItem:
+        		text: "Notes List"
+        	
+        MDScrollView:
+            
+            MDList:
+                
+                OneLineIconListItem:
+                	
+                	text: "New Note"
+  
+                    IconLeftWidget:
+                        icon: "book-check-outline"
+                        on_release: root.add_note()
