@@ -89,10 +89,10 @@ WindowManager:
 
                 MDRaisedButton:
                     id: note_button
-                    text: "Journal Notes"
+                    text: "Open Journal"
                     on_release: 
                         app.root.current = "notes_window" 
-                        root.manager.transition.direction = "left"
+                        root.manager.transition.direction = "right"
                     
                 MDLabel:
                     id: questionBox
@@ -136,14 +136,8 @@ WindowManager:
             title: "Stronger Together Journal"
             pos_hint: {'top': 1, 'y': 0}
             left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
-            right_action_items: [['keyboard-backspace'],['file-settings-outline']]
+            right_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')],['file-settings-outline']]
         
-        MDRaisedButton:
-            id: back_button
-            text: "Back"
-            on_release: 
-                app.root.current = "main_window" 
-                root.manager.transition.direction = "right"
         
         ScrollView:
     

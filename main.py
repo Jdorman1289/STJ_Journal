@@ -35,6 +35,10 @@ class WindowManager(ScreenManager):
     pass
 
 class STJ(MDApp):
+
+    def set_screen(self, screen_name):
+        self.root.current = screen_name
+
     def build(self):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "DeepPurple"
