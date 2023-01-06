@@ -1,3 +1,8 @@
+################################### Custom Class Stuff ##############################
+
+<SettingsList>
+    IconLeftWidget:
+        source: root.source
 
 ################################### All Windows #####################################
 
@@ -138,7 +143,7 @@ WindowManager:
             title: "Stronger Together Journal"
             pos_hint: {'top': 1, 'y': 0}
             left_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')]]
-            right_action_items: [['file-settings-outline'],['menu', lambda x: nav_drawer.set_state("open")]]
+            right_action_items: [['file-settings-outline', lambda x: app.notes_settings()],['menu', lambda x: nav_drawer.set_state("open")]]
         
         MDTextField:
             size_hint_x: 1
