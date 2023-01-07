@@ -67,6 +67,6 @@ class STJ(MDApp):
         self.theme_cls.primary_palette = "BlueGray"
         return Builder.load_file('layouts.kv')
 
-# on launch start main window class
+
 if __name__ == "__main__":
     STJ().run()
