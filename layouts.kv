@@ -34,11 +34,21 @@ WindowManager:
                     Rectangle:
                         pos: self.pos
                         size: self.size
+
                 
                 MDTopAppBar:
                     pos_hint: {'top': 1, 'y': 0}
-                    title: "Scripture for the year"
-     
+                    Image: 
+                        source: "logo_black_logo.png"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: 200
+                        height: 75
+                MDList:
+                    OneLineListItem:
+                        text: "Scripture for the year"
+
                 MDScrollView:
                     
                     MDList:
@@ -88,10 +98,18 @@ WindowManager:
                         pos: self.pos
                         size: self.size
 
-
                 MDTopAppBar:
                     pos_hint: {'top': 1, 'y': 0}
-                    title: "Questions to reflect on during study"
+                    Image: 
+                        source: "logo_black_logo.png"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: 200
+                        height: 75
+                MDList:
+                    OneLineListItem:
+                        text: "Questions to reflect on"
 
                 MDLabel:
                     id: questionBox
@@ -122,6 +140,19 @@ WindowManager:
                     Rectangle:
                         pos: self.pos
                         size: self.size
+
+                MDTopAppBar:
+                    pos_hint: {'top': 1, 'y': 0}
+                    Image: 
+                        source: "logo_black_logo.png"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: 200
+                        height: 75
+                MDList:
+                    OneLineListItem:
+                        text: ""
 
 #################################### Notes Window Layout #############################
 <NotesWindow>
@@ -172,11 +203,4 @@ WindowManager:
         MDScrollView:
             
             MDList:
-                
-                OneLineIconListItem:
-                	
-                	text: "New Note"
-  
-                    IconLeftWidget:
-                        icon: "book-check-outline"
-                        
+                id: list_of_notes
