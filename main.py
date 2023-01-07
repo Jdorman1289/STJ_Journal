@@ -11,7 +11,7 @@ Window.size = 640, 640
 
 class SettingsList(OneLineIconListItem):
     divider = None
-    source = StringProperty()
+    icon = StringProperty()
 
 class MainWindow(Screen):
 
@@ -27,7 +27,7 @@ class MainWindow(Screen):
 
 class NotesWindow(Screen):
 
-    def add_note(self):
+    def save_note(self):
         #to be added
         pass
     def discard_note(self):
@@ -55,8 +55,8 @@ class STJ(MDApp):
                 title="Settings",
                 type="simple",
                 items=[
-                    SettingsList(text="Save Note",source="content-save-outline"),
-                    SettingsList(text="Discard Draft",source="delete-alert-outline"),
+                    SettingsList(text="Save Note",icon="content-save-outline"),
+                    SettingsList(text="Discard Draft",icon="delete-alert-outline"),
                 ],
             )
         self.dialog.open()
