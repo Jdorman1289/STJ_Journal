@@ -4,6 +4,15 @@
     IconLeftWidget:
         icon: root.icon
 
+<NoteTitle>
+    orientation: "vertical"
+    size_hint_y: None
+    height: "75dp"
+
+    MDTextField:
+        id: note_title
+        text: ""
+
 ################################### All Windows #####################################
 
 WindowManager:
@@ -169,14 +178,14 @@ WindowManager:
                 pos: self.pos
                 size: self.size
 
-
         MDTopAppBar:
             title: "Stronger Together Journal"
             pos_hint: {'top': 1, 'y': 0}
             left_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')]]
-            right_action_items: [['file-settings-outline', lambda x: app.notes_settings()],['menu', lambda x: nav_drawer.set_state("open")]]
+            right_action_items: [['content-save-outline', lambda x: app.save_note()],['menu', lambda x: nav_drawer.set_state("open")]]
         
         MDTextField:
+            id: note_text
             size_hint_x: 1
             size_hint_y: 1
             mode: "fill"
@@ -188,8 +197,6 @@ WindowManager:
             multiline: True
             icon_right: "book-edit"
             pos_hint: {"center_x": .5, "center_y": .5}
-    
-    
     
     MDNavigationDrawer:
         id: nav_drawer

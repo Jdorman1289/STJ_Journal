@@ -4,6 +4,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.list import OneLineIconListItem
 from kivy.properties import StringProperty
 from kivymd.uix.dialog import MDDialog
+from kivy.uix.boxlayout import BoxLayout
+from kivymd.uix.button import MDFlatButton
 from kivy.core.window import Window
 import webbrowser
 
@@ -12,6 +14,9 @@ Window.size = 480, 640
 class SettingsList(OneLineIconListItem):
     divider = None
     icon = StringProperty()
+
+class NoteTitle(BoxLayout):
+    pass
 
 class MainWindow(Screen):
 
@@ -26,14 +31,7 @@ class MainWindow(Screen):
 
 
 class NotesWindow(Screen):
-
-    def save_note(self):
-        #to be added
-        pass
-    def discard_note(self):
-        #to be added
-        pass
-
+    pass
 
 class NavBar(Screen):
     pass
@@ -41,25 +39,41 @@ class NavBar(Screen):
 class WindowManager(ScreenManager):
     pass
 
+
+
 class STJ(MDApp):
+
+    dialog = None
 
     def set_screen(self, screen_name):
         self.root.current = screen_name
 
-    dialog = None
 
-    def notes_settings(self):
-
+    def save_note(self):
         if not self.dialog:
             self.dialog = MDDialog(
-                title="Settings",
-                type="simple",
-                items=[
-                    SettingsList(text="Save Note",icon="content-save-outline"),
-                    SettingsList(text="Discard Draft",icon="delete-alert-outline"),
+                title="Note Title",
+                type="custom",
+                content_cls=NoteTitle(),
+                buttons=[
+                    MDFlatButton(
+                        text="CANCEL",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
+                        on_release=lambda x: self.dialog.dismiss(),
+                    ),
+                    MDFlatButton(
+                        text="OK",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
+                    ),
                 ],
-            )
+            )           
         self.dialog.open()
+
+        # note_text = self.ids.note_text.text
+        # list_of_notes = self.ids.list_of_notes
+        # note_title = self.ids.note_title.text
 
 
     def build(self):
