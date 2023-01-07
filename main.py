@@ -7,7 +7,7 @@ from kivymd.uix.dialog import MDDialog
 from kivy.core.window import Window
 import webbrowser
 
-Window.size = 640, 640
+Window.size = 480, 640
 
 class SettingsList(OneLineIconListItem):
     divider = None
