@@ -1,8 +1,7 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivymd.uix.list import OneLineIconListItem
-from kivy.properties import StringProperty
+from kivymd.uix.list import TwoLineListItem
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.button import MDFlatButton
@@ -11,9 +10,6 @@ import webbrowser
 
 Window.size = 480, 640
 
-class SettingsList(OneLineIconListItem):
-    divider = None
-    icon = StringProperty()
 
 class NoteTitle(BoxLayout):
     pass
@@ -33,9 +29,6 @@ class MainWindow(Screen):
 class NotesWindow(Screen):
     pass
 
-class NavBar(Screen):
-    pass
-
 class WindowManager(ScreenManager):
     pass
 
@@ -47,6 +40,20 @@ class STJ(MDApp):
 
     def set_screen(self, screen_name):
         self.root.current = screen_name
+
+    def add_to_list(self, note_title):
+        screen_manager = self.root
+        notes_window = screen_manager.get_screen("notes_window")
+
+        list_of_notes = notes_window.ids.list_of_notes
+        note_text = notes_window.ids.note_text.text
+    
+        list_of_notes.add_widget(
+            TwoLineListItem(
+                text=note_title.text,
+                secondary_text=note_text,
+            )
+        )
 
 
     def save_note(self):
@@ -66,15 +73,12 @@ class STJ(MDApp):
                         text="OK",
                         theme_text_color="Custom",
                         text_color=self.theme_cls.primary_color,
+                        on_press=lambda x: self.add_to_list(self.dialog.content_cls.ids.note_title),
+                        on_release=lambda x: self.dialog.dismiss(),
                     ),
                 ],
             )           
         self.dialog.open()
-
-        # note_text = self.ids.note_text.text
-        # list_of_notes = self.ids.list_of_notes
-        # note_title = self.ids.note_title.text
-
 
     def build(self):
         self.theme_cls.theme_style = "Dark"
