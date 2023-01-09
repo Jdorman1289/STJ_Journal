@@ -10,6 +10,7 @@ import webbrowser
 
 Window.size = 480, 640
 
+persistent_notes = {}
 
 class NoteTitle(BoxLayout):
     pass
@@ -32,8 +33,6 @@ class NotesWindow(Screen):
 class WindowManager(ScreenManager):
     pass
 
-
-
 class STJ(MDApp):
 
     dialog = None
@@ -41,19 +40,31 @@ class STJ(MDApp):
     def set_screen(self, screen_name):
         self.root.current = screen_name
 
+    # def edit_saved_item(self):
+
+    def new_note(self):
+        screen_manager = self.root
+        notes_window = screen_manager.get_screen("notes_window")
+        notes_window.ids.note_text.text = ""
+        self.dialog.content_cls.ids.note_title.text = ""
+
+
     def add_to_list(self, note_title):
         screen_manager = self.root
         notes_window = screen_manager.get_screen("notes_window")
-
         list_of_notes = notes_window.ids.list_of_notes
         note_text = notes_window.ids.note_text.text
-    
-        list_of_notes.add_widget(
-            TwoLineListItem(
-                text=note_title.text,
-                secondary_text=note_text,
+
+        persistent_notes[note_title.text] = note_text
+        list_of_notes.clear_widgets()
+
+        for key, value in persistent_notes.items():
+            list_of_notes.add_widget(
+                TwoLineListItem(
+                    text=key,
+                    secondary_text=value,
+                )
             )
-        )
 
 
     def save_note(self):
