@@ -44,7 +44,7 @@ class STJ(MDApp):
         screen_manager = self.root
         notes_window = screen_manager.get_screen("notes_window")
         notes_window.ids.note_text.text = body
-        self.dialog.content_cls.ids.note_title.text = title
+        self.dialog.content_cls.ids.note_title.text = title.text
         
     # def remove_list_item(self):
 
@@ -69,7 +69,7 @@ class STJ(MDApp):
                 TwoLineListItem(
                     text=key,
                     secondary_text=value,
-                    on_press = lambda  x: self.edit_saved_item(key,value),
+                    on_press = lambda key=key, value=value: self.edit_saved_item(key,value),
                     on_release = lambda x: notes_window.ids.nav_drawer.set_state("closed")
                 )
             )
