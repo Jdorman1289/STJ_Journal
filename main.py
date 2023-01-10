@@ -1,7 +1,7 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivymd.uix.list import TwoLineIconListItem, IconRightWidget
+from kivymd.uix.list import TwoLineListItem
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.button import MDFlatButton
@@ -66,7 +66,7 @@ class STJ(MDApp):
 
         for key, value in persistent_notes.items():
             list_of_notes.add_widget(
-                TwoLineIconListItem(
+                TwoLineListItem(
                     text=key,
                     secondary_text=value,
                     on_press = lambda key=key, value=value: self.edit_saved_item(key,value),
