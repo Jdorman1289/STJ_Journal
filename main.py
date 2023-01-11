@@ -1,16 +1,19 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivymd.uix.list import TwoLineListItem
+from kivymd.uix.list import TwoLineIconListItem
 from kivymd.uix.dialog import MDDialog
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.button import MDFlatButton
-from kivy.core.window import Window
+from kivy.core.window import Window, StringProperty
 import webbrowser
 
 Window.size = 480, 640
 
 persistent_notes = {}
+
+class CustomTwoLineIconListItem(TwoLineIconListItem):
+    icon = StringProperty()
 
 class NoteTitle(BoxLayout):
     pass
@@ -46,7 +49,9 @@ class STJ(MDApp):
         notes_window.ids.note_text.text = body
         self.dialog.content_cls.ids.note_title.text = title.text
         
-    # def remove_list_item(self):
+    def remove_list_item(self):
+        #to be added
+        pass
 
     def new_note(self):
         screen_manager = self.root
@@ -66,11 +71,12 @@ class STJ(MDApp):
 
         for key, value in persistent_notes.items():
             list_of_notes.add_widget(
-                TwoLineListItem(
+                CustomTwoLineIconListItem(
                     text=key,
                     secondary_text=value,
                     on_press = lambda key=key, value=value: self.edit_saved_item(key,value),
                     on_release = lambda x: notes_window.ids.nav_drawer.set_state("closed"),
+                    icon="trash-can-outline",
                 )
             )
 
