@@ -14,6 +14,7 @@ persistent_notes = {}
 
 class CustomTwoLineIconListItem(TwoLineIconListItem):
     icon = StringProperty()
+    # icon_func = lambda x:x
 
 class NoteTitle(BoxLayout):
     pass
@@ -77,6 +78,7 @@ class STJ(MDApp):
                     on_press = lambda key=key, value=value: self.edit_saved_item(key,value),
                     on_release = lambda x: notes_window.ids.nav_drawer.set_state("closed"),
                     icon="trash-can-outline",
+                    # icon_func = lambda x: self.remove_list_item(),
                 )
             )
 
