@@ -1,27 +1,10 @@
 ################################### Custom Class Stuff ##############################
 
-<NoteTitle>
-    orientation: "vertical"
-    size_hint_y: None
-    height: "75dp"
-
-    MDTextField:
-        id: note_title
-        text: ""
-
-<CustomTwoLineIconListItem>
-    
-
-    IconLeftWidget:
-        icon: root.icon
-        #icon_func: root.icon_func
-
 
 ################################### All Windows #####################################
 
 WindowManager:
     MainWindow:
-    NotesWindow:
 
 #################################### Main Window Layout #############################
 <MainWindow>
@@ -32,7 +15,7 @@ WindowManager:
         MDBottomNavigationItem:
             name: "screen 1"
             text: "Date"
-            icon: "calendar"
+            icon: "book-cross"
 
             MDGridLayout:
                 cols: 1
@@ -54,92 +37,18 @@ WindowManager:
                         size_hint: None, None
                         width: 200
                         height: 75
-                MDList:
-                    OneLineListItem:
-                        text: "Scripture for the year"
 
-                MDScrollView:
-                    
-                    MDList:
-                        
-                        TwoLineIconListItem:
-                            
-                            text: "JAN 1"
-                            secondary_text: "Passage: Matt 1-2"
-  
-        
-                            IconLeftWidget:
-                                icon: "arrow-right-bold-box-outline"
-                                on_release: root.jan1()
-                                
-                        TwoLineIconListItem:
-                            text: "JAN 8"
-                            secondary_text: "Passage: Matt 3-4"
+                MDFloatingActionButton:
+                    id: note_button
+                    icon: "menu"
+                    elevation: 0
+                    on_release: 
+                        lambda x: nav_drawer.set_state("open")
 
-                        
-                            IconLeftWidget:
-                                icon: "arrow-right-bold-box-outline"
-                                on_release: root.jan8()
-                                
-                        
-                        TwoLineIconListItem:
-                            text: "JAN 15"
-                            secondary_text: "Passage: Matt 5-6"
-
-                    
-                            IconLeftWidget:
-                                icon: "arrow-right-bold-box-outline"                   
-                                on_release: 
-                                    root.jan15()
 
 
         MDBottomNavigationItem:
             name: "screen 2"
-            text: "Reflection"
-            icon: "chat-question-outline"
-
-
-            MDGridLayout:
-                cols: 1
-                size: root.width, root.height
-
-                canvas.before:
-                    Color:
-                        rgb: (.18, .18, .18)
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-                MDTopAppBar:
-                    pos_hint: {'top': 1, 'y': 0}
-                    Image: 
-                        source: "logo_black_logo.png"
-                        allow_stretch: True
-                        keep_ratio: False
-                        size_hint: None, None
-                        width: 200
-                        height: 75
-                MDList:
-                    OneLineListItem:
-                        text: "Daily and Weekly Questions"
-
-                MDLabel:
-                    id: questionBox
-                    text: "Reflection Questions Here"
-                    bold: True
-                
-
-                MDFloatingActionButton:
-                    id: note_button
-                    icon: "book-cross"
-                    elevation: 0
-                    on_release: 
-                        app.root.current = "notes_window" 
-                        root.manager.transition.direction = "right"
-                    
-                    
-        MDBottomNavigationItem:
-            name: "screen 3"
             text: "About"
             icon: "information-outline"
 
@@ -166,51 +75,46 @@ WindowManager:
                     OneLineListItem:
                         text: ""
 
-#################################### Notes Window Layout #############################
-<NotesWindow>
-    name: "notes_window"
 
-    MDBoxLayout:
-        orientation: "vertical"
-        size: root.width, root.height
-
-        canvas.before:
-            Color:
-            	rgb: (.18, .18, .18)
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-        MDTopAppBar:
-            title: "Stronger Together Journal"
-            pos_hint: {'top': 1, 'y': 0}
-            left_action_items: [['keyboard-backspace', lambda x: app.set_screen('main_window')]]
-            right_action_items: [['sticker-plus-outline', lambda x: app.new_note()],['content-save-outline', lambda x: app.save_note()],['menu', lambda x: nav_drawer.set_state("open")]]
-        
-        MDTextField:
-            id: note_text
-            size_hint_x: 1
-            size_hint_y: 1
-            mode: "fill"
-            hint_text: "Write Journal Note Here:"
-            fill_color_normal: (.18,.18,.18)
-            fill_color_focus: (.28, .28, .28)
-            text_color_focus: "white"
-            text_color_normal: "white"
-            multiline: True
-            icon_right: "book-edit"
-            pos_hint: {"center_x": .5, "center_y": .5}
-    
     MDNavigationDrawer:
         id: nav_drawer
 
         orientation: "vertical"
         
         MDList:
-        	OneLineListItem:
-        		text: "Notes List"
-        	
+            OneLineListItem:
+                text: "Scripture for the year"
+
         MDScrollView:
             
             MDList:
-                id: list_of_notes
+                
+                TwoLineIconListItem:
+                    
+                    text: "JAN 1"
+                    secondary_text: "Passage: Matt 1-2"
+
+
+                    IconLeftWidget:
+                        icon: "web"
+                        on_release: root.jan1()
+                        
+                TwoLineIconListItem:
+                    text: "JAN 8"
+                    secondary_text: "Passage: Matt 3-4"
+
+                
+                    IconLeftWidget:
+                        icon: "web"
+                        on_release: root.jan8()
+                        
+                
+                TwoLineIconListItem:
+                    text: "JAN 15"
+                    secondary_text: "Passage: Matt 5-6"
+
+            
+                    IconLeftWidget:
+                        icon: "web"                   
+                        on_release: 
+                            root.jan15()
