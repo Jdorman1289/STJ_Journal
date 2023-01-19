@@ -94,7 +94,8 @@ One thing you are thankful for tonight:
 
         """
 
-
+    def save_note(self):
+        persistent_notes[self.day_selected] = self.ids.journal_questions_text.text
 
     def jan1(self):
         webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=004b4A")
