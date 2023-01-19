@@ -8,9 +8,18 @@ Window.size = 480, 640
 
 persistent_notes = {}
 
+day_selected = ""
+
 class MainWindow(Screen):
 
     def display_journal(self, which_day, scripture_reference):
+
+        self.day_selected = which_day
+        for key, value in persistent_notes.items():
+            if key == which_day:
+                self.ids.journal_questions_text.text = value
+
+
         self.ids.journal_guide.text = f"""
 Date: {which_day}
 
