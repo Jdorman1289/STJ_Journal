@@ -23,8 +23,7 @@ class MainWindow(Screen):
         for key, value in persistent_notes.items():
             if key == which_day:
                 self.ids.journal_questions_text.text = value
-            else:
-                self.ids.journal_questions_text.text = ""
+ 
 
 
         self.ids.journal_guide.text = f"""
