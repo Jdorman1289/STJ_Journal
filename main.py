@@ -12,7 +12,7 @@ try:
     persistent_notes = json.load(file)
 except:
     persistent_notes = {}
-    
+
 day_selected = ""
 
 class MainWindow(Screen):
@@ -23,6 +23,8 @@ class MainWindow(Screen):
         for key, value in persistent_notes.items():
             if key == which_day:
                 self.ids.journal_questions_text.text = value
+            else:
+                self.ids.journal_questions_text.text = ""
 
 
         self.ids.journal_guide.text = f"""
@@ -100,12 +102,16 @@ One thing you are thankful for tonight:
         """
 
     def save_note(self):
-        persistent_notes[self.day_selected] = self.ids.journal_questions_text.text
 
-        json_notes = json.dumps(persistent_notes)
-        f = open("notes.json","w")
-        f.write(json_notes)
-        f.close
+        try:
+            persistent_notes[self.day_selected] = self.ids.journal_questions_text.text
+
+            json_notes = json.dumps(persistent_notes)
+            f = open("notes.json","w")
+            f.write(json_notes)
+            f.close
+        except:
+            pass
 
     def jan1(self):
         webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=004b4A")
