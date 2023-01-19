@@ -8,8 +8,36 @@ Window.size = 480, 640
 
 persistent_notes = {}
 
-
 class MainWindow(Screen):
+
+    def display_journal(self, which_day, scripture_reference):
+        self.ids.morning.text = f"""
+Date: {which_day}
+
+Scripture Reading Plan
+   
+   Passage: {scripture_reference}
+
+   What is passage about?
+
+   How can I apply it to my life? 
+
+  This Week's Scripture Memory Verse:"
+        """
+
+        self.ids.prayer_list.text = """
+Prayer List
+
+1.
+2.
+3.
+4.
+5.
+6.
+
+        """
+
+
 
     def jan1(self):
         webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=004b4A")

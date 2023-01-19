@@ -1,6 +1,5 @@
 ################################### Custom Class Stuff ##############################
 
-
 ################################### All Windows #####################################
 
 WindowManager:
@@ -15,7 +14,7 @@ WindowManager:
         MDBottomNavigationItem:
             name: "screen 1"
             text: "Date"
-            icon: "book-cross"
+            icon: "chat-question-outline"
 
             MDGridLayout:
                 cols: 1
@@ -37,10 +36,66 @@ WindowManager:
                         size_hint: None, None
                         width: 200
                         height: 75
+                
+                ScrollView:
+
+                    MDList:
+
+                        MDGridLayout:
+                            cols: 2
+
+                            MDCard:
+                                elevation: 5
+                                size_hint_y: None
+                                height: 200
+                            
+                                ScrollView:
+
+                                    MDLabel:
+                                        id: morning
+                                        text: ""
+                                        size_hint_y: None
+                                        text_size: self.width, None
+                                        height: self.texture_size[1]
+
+
+                            MDTextField:
+                                id: morning_questions_text
+                                size_hint_y: 1
+                                hint_text: "Question Answers: "
+                                multiline: True
+                                mode: "fill"
+                                icon_right: "book-edit"
+                                text: ""
+
+
+                            MDCard:
+                                elevation: 5
+                                size_hint_y: None
+                                height: 200
+
+                                ScrollView:
+
+                                    MDLabel:
+                                        id: prayer_list
+                                        text: "" 
+                                        size_hint_y: None
+                                        text_size: self.width, None
+                                        height: self.texture_size[1]
+                            
+                            MDTextField:
+                                id: prayer_list_text
+                                size_hint_y: 1
+                                hint_text: "Prayer List: "
+                                multiline: True
+                                mode: "fill"
+                                icon_right: "book-edit"
+                                text: ""
+
 
                 MDFloatingActionButton:
                     id: note_button
-                    icon: "menu"
+                    icon: "book-cross"
                     elevation: 0
                     on_release:
                         nav_drawer.set_state("open")
@@ -93,6 +148,8 @@ WindowManager:
                     
                     text: "JAN 1"
                     secondary_text: "Passage: Matt 1-2"
+                    on_press: root.display_journal("JAN 1", "Matt 1-2")
+                    on_release: nav_drawer.set_state("closed")
 
 
                     IconLeftWidget:
@@ -102,6 +159,8 @@ WindowManager:
                 TwoLineIconListItem:
                     text: "JAN 8"
                     secondary_text: "Passage: Matt 3-4"
+                    on_press: root.display_journal("JAN 8", "Matt 3-4")
+                    on_release: nav_drawer.set_state("closed")
 
                 
                     IconLeftWidget:
@@ -112,6 +171,8 @@ WindowManager:
                 TwoLineIconListItem:
                     text: "JAN 15"
                     secondary_text: "Passage: Matt 5-6"
+                    on_press: root.display_journal("JAN 15", "Matt 5-6")
+                    on_release: nav_drawer.set_state("closed")
 
             
                     IconLeftWidget:
