@@ -4,7 +4,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 import webbrowser
 
-Window.size = 480, 640
+Window.size = 280, 620
 
 persistent_notes = {}
 
