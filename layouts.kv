@@ -13,7 +13,7 @@ WindowManager:
 
         MDBottomNavigationItem:
             name: "screen 1"
-            text: "Date"
+            text: "Reflection"
             icon: "chat-question-outline"
 
             MDGridLayout:
@@ -37,68 +37,45 @@ WindowManager:
                         width: 200
                         height: 75
                 
-                ScrollView:
+                TabbedPanel:
+                    size_hint: .5, .5
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    do_default_tab: False
 
-                    MDList:
-
+                    TabbedPanelItem:
+                        text: 'Guide'
+                        
                         MDGridLayout:
-                            cols: 2
+                            cols: 1
+                    
+                            ScrollView:
 
-                            MDCard:
-                                elevation: 5
-                                size_hint_y: None
-                                height: 200
-                            
-                                ScrollView:
-
-                                    MDLabel:
-                                        id: morning
-                                        text: ""
-                                        size_hint_y: None
-                                        text_size: self.width, None
-                                        height: self.texture_size[1]
+                                MDLabel:
+                                    id: journal_guide
+                                    text: ""
+                                    size_hint_y: None
+                                    text_size: self.width, None
+                                    height: self.texture_size[1]
 
 
-                            MDTextField:
-                                id: morning_questions_text
-                                size_hint_y: 1
-                                hint_text: "Question Answers: "
-                                multiline: True
-                                mode: "fill"
-                                icon_right: "book-edit"
-                                text: ""
+                            MDFloatingActionButton:
+                                id: note_button
+                                icon: "book-cross"
+                                elevation: 0
+                                on_release:
+                                    nav_drawer.set_state("open")
 
+                    TabbedPanelItem:
+                        text: 'Journal'
 
-                            MDCard:
-                                elevation: 5
-                                size_hint_y: None
-                                height: 200
-
-                                ScrollView:
-
-                                    MDLabel:
-                                        id: prayer_list
-                                        text: "" 
-                                        size_hint_y: None
-                                        text_size: self.width, None
-                                        height: self.texture_size[1]
-                            
-                            MDTextField:
-                                id: prayer_list_text
-                                size_hint_y: 1
-                                hint_text: "Prayer List: "
-                                multiline: True
-                                mode: "fill"
-                                icon_right: "book-edit"
-                                text: ""
-
-
-                MDFloatingActionButton:
-                    id: note_button
-                    icon: "book-cross"
-                    elevation: 0
-                    on_release:
-                        nav_drawer.set_state("open")
+                        MDTextField:
+                            id: journal_questions_text
+                            size_hint_y: 1
+                            hint_text: "Question Answers: "
+                            multiline: True
+                            mode: "fill"
+                            icon_right: "book-edit"
+                            text: ""
 
 
 
@@ -138,7 +115,7 @@ WindowManager:
         
         MDList:
             OneLineListItem:
-                text: "Scripture for the year"
+                text: "The 2023 Reading Plan"
 
         MDScrollView:
             
