@@ -7,8 +7,12 @@ import webbrowser
 
 Window.size = 480, 640
 
-persistent_notes = {}
-
+try:
+    file = open('notes.json', 'r')
+    persistent_notes = json.load(file)
+except:
+    persistent_notes = {}
+    
 day_selected = ""
 
 class MainWindow(Screen):
