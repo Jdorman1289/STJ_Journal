@@ -105,8 +105,20 @@ WindowManager:
                         width: 200
                         height: 75
                 MDList:
-                    OneLineListItem:
-                        text: ""
+                    Image:
+                        source: "FBC_logo.png"
+                        allow_stretch: True
+                        keep_ratio: False
+                        size_hint: None, None
+                        width: 200
+                        height: 75
+
+                MDCard:
+                    ScrollView:
+                        MDList:
+                            MDLabel:
+                                id: about_text
+                                text: ""
 
 
     MDNavigationDrawer:
