@@ -17,34 +17,9 @@ day_selected = ""
 
 class MainWindow(Screen):
 
-#     def create_about(self):
-#         self.ids.about_text.text = """
 
-# VISION:
-
-# We are a Great Commission Church with every member on mission with God.
- 
-# MISSION:
-
-# First Baptist Church of Brownsville is a multi-cultural, multi-linguistic ministry bringing Jesus Christ to Brownsville, the Rio Grande Valley, Mexico, and the world, through our worship, discipleship, and love.
-
-# PURPOSE:
-
-# First Baptist Church exists to exalt the Savior in worship, equip the saints through Biblical discipleship, extend Christ’s salvation by witnessing and church planting, and express the love of Jesus to all people by our service and compassion.
-# Exalt the Savior
-# Equip the Believer
-# Extend the Gospel to all Peoples
-# Express Christ's Love
-
-# VALUES:
-
-# At First Baptist Church of Brownsville we value people because Jesus values people.
-# Everything we do will be in fulfillment of our purposes.
-# Everything we do will be done with excellence.
-# Everything we do will be done because of love and in a loving manner.
-# Everything we do will help us to better reach people with the Gospel of Jesus Christ.
-    
-# """
+    def about(self):
+        webbrowser.open_new_tab("https://www.fbcbrownsville.com/who-we-are/")
 
     def display_journal(self, which_day, scripture_reference):
 

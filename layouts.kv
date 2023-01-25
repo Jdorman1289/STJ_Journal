@@ -9,117 +9,76 @@ WindowManager:
 <MainWindow>
     name: "main_window"
 
-    MDBottomNavigation:
+    MDGridLayout:
+        cols: 1
+        
+        canvas.before:
+            Color:
+                rgb: (.18, .18, .18)
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
-        MDBottomNavigationItem:
-            name: "screen 1"
-            text: "Reflection"
-            icon: "chat-question-outline"
+        
 
-            MDGridLayout:
-                cols: 1
+            
+        TabbedPanel:
+            size_hint: .5, .5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            do_default_tab: False
+
+            TabbedPanelItem:
+                text: 'Guide'
                 
-                canvas.before:
-                    Color:
-                        rgb: (.18, .18, .18)
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-                
-                MDTopAppBar:
-                    pos_hint: {'top': 1, 'y': 0}
-                    Image: 
-                        source: "logo_nobg.png"
-                        allow_stretch: True
-                        keep_ratio: False
-                        size_hint: None, None
-                        width: 200
-                        height: 75
-                
-                TabbedPanel:
-                    size_hint: .5, .5
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    do_default_tab: False
-
-                    TabbedPanelItem:
-                        text: 'Guide'
-                        
-                        MDGridLayout:
-                            cols: 1
-                    
-                            ScrollView:
-
-                                MDLabel:
-                                    id: journal_guide
-                                    text: "Please select the date"
-                                    size_hint_y: None
-                                    text_size: self.width, None
-                                    height: self.texture_size[1]
-
-
-                            MDFloatingActionButton:
-                                id: note_button
-                                icon: "book-cross"
-                                elevation: 0
-                                on_release:
-                                    nav_drawer.set_state("open")
-
-                    TabbedPanelItem:
-                        text: 'Journal'
-
-                        MDTextField:
-                            id: journal_questions_text
-                            size_hint_y: 1
-                            hint_text: "Question Answers: "
-                            multiline: True
-                            mode: "fill"
-                            icon_right: "book-edit"
-                            text: ""
-                            on_touch_up: root.save_note()
-
-
-
-        MDBottomNavigationItem:
-            name: "screen 2"
-            text: "About"
-            icon: "information-outline"
-
-            MDGridLayout:
-                cols: 1
-                
-                canvas.before:
-                    Color:
-                        rgb: (.18, .18, .18)
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-                MDTopAppBar:
-                    pos_hint: {'top': 1, 'y': 0}
-                    Image: 
-                        source: "logo_nobg.png"
-                        allow_stretch: True
-                        keep_ratio: False
-                        size_hint: None, None
-                        width: 200
-                        height: 75
-                MDList:
-                    Image:
-                        source: "FBC_logo.png"
-                        allow_stretch: True
-                        keep_ratio: False
-                        size_hint: None, None
-                        width: 200
-                        height: 75
-
-                MDCard:
+                MDGridLayout:
+                    cols: 1
+            
                     ScrollView:
-                        MDList:
-                            MDLabel:
-                                id: about_text
-                                text: ""
 
+                        MDLabel:
+                            id: journal_guide
+                            text: "Please select the date"
+                            size_hint_y: None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+
+
+                    MDFloatingActionButton:
+                        id: note_button
+                        icon: "book-cross"
+                        elevation: 0
+                        on_release:
+                            nav_drawer.set_state("open")
+
+            TabbedPanelItem:
+                text: 'Journal'
+
+                MDTextField:
+                    id: journal_questions_text
+                    size_hint_y: 1
+                    hint_text: "Question Answers: "
+                    multiline: True
+                    mode: "fill"
+                    icon_right: "book-edit"
+                    text: ""
+                    on_touch_up: root.save_note()
+
+        MDBottomAppBar:
+
+            MDTopAppBar:
+                #pos_hint: {'top': 1, 'y': 0}
+                #title: "Title"
+                type: "bottom"
+                icon: "git"
+                mode: "end"
+                on_action_button: root.about()
+                Image: 
+                    source: "logo_nobg.png"
+                    allow_stretch: True
+                    keep_ratio: False
+                    size_hint: None, None
+                    width: 200
+                    height: 75
 
     MDNavigationDrawer:
         id: nav_drawer
