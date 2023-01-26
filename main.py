@@ -116,14 +116,9 @@ One thing you are thankful for tonight:
         except:
             pass
 
-    def jan1(self):
-        webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=004b4A")
-            
-    def jan8(self):
-        webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=008QpB")
-    
-    def jan15(self):
-        webbrowser.open_new_tab("https://www.blueletterbible.org/tools/MultiVerse.cfm?s=008QpD")
+
+    def open_passage(self, book, chapter):
+        webbrowser.open_new_tab(f"https://www.blueletterbible.org/nasb20/{book}/{chapter}/1/s_936001")
 
 
 class WindowManager(ScreenManager):
