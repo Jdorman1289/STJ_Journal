@@ -1,11 +1,10 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.core.window import Window
 import json
 import webbrowser
 
-Window.size = 480, 640
+__version__ = "1.0.0"
 
 try:
     file = open('notes.json', 'r')
