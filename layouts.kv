@@ -18,50 +18,28 @@ WindowManager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-
-        
+      
+        MDGridLayout:
+            cols: 1
+    
+            MDTextField:
+                id: journal_questions_text
+                size_hint_y: 1
+                hint_text: "Journal: "
+                multiline: True
+                mode: "fill"
+                icon_right: "book-edit"
+                text: ""
+                on_touch_up: root.save_note()
 
             
-        TabbedPanel:
-            size_hint: .5, .5
-            pos_hint: {'center_x': .5, 'center_y': .5}
-            do_default_tab: False
+            MDFloatingActionButton:
+                id: note_button
+                icon: "book-cross"
+                elevation: 0
+                on_release:
+                    nav_drawer.set_state("open")
 
-            TabbedPanelItem:
-                text: 'Guide'
-                
-                MDGridLayout:
-                    cols: 1
-            
-                    ScrollView:
-
-                        MDLabel:
-                            id: journal_guide
-                            text: "Please select the date"
-                            size_hint_y: None
-                            text_size: self.width, None
-                            height: self.texture_size[1]
-
-
-                    MDFloatingActionButton:
-                        id: note_button
-                        icon: "book-cross"
-                        elevation: 0
-                        on_release:
-                            nav_drawer.set_state("open")
-
-            TabbedPanelItem:
-                text: 'Journal'
-
-                MDTextField:
-                    id: journal_questions_text
-                    size_hint_y: 1
-                    hint_text: "Question Answers: "
-                    multiline: True
-                    mode: "fill"
-                    icon_right: "book-edit"
-                    text: ""
-                    on_touch_up: root.save_note()
 
         MDBottomAppBar:
 

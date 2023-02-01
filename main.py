@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import json
 import webbrowser
 
-__version__ = "1.0.0"
 
 try:
     file = open('notes.json', 'r')
@@ -23,13 +22,8 @@ class MainWindow(Screen):
     def display_journal(self, which_day, scripture_reference):
 
         self.day_selected = which_day
-        for key, value in persistent_notes.items():
-            if key == which_day:
-                self.ids.journal_questions_text.text = value
- 
 
-
-        self.ids.journal_guide.text = f"""
+        starting_text = f"""
 Date: {which_day}
 
 Scripture Reading Plan
@@ -102,6 +96,12 @@ One thing you are thankful for tonight:
 
 
         """
+        for key, value in persistent_notes.items():
+            if key == which_day:
+                self.ids.journal_questions_text.text = value
+
+        if self.ids.journal_questions_text.text == "":
+            self.ids.journal_questions_text.text = starting_text
 
     def save_note(self):
 
@@ -112,6 +112,7 @@ One thing you are thankful for tonight:
             f = open("notes.json","w")
             f.write(json_notes)
             f.close
+
         except:
             pass
 
