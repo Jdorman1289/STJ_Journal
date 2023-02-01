@@ -21,40 +21,35 @@ WindowManager:
       
         MDGridLayout:
             cols: 1
-    
+
+            MDTopAppBar:
+                id: toolbar
+                title: "Journal"
+                left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                right_action_items: [["information-variant", lambda x: root.about()]]
+                elevation: 10
+                md_bg_color: 0, 0, 0, 1
+                specific_text_color: 1, 1, 1, 1
+
             MDTextField:
                 id: journal_questions_text
                 size_hint_y: 1
-                hint_text: "Journal: "
                 multiline: True
+                text_color_focus: 1, 1, 1, 1
                 mode: "fill"
                 icon_right: "book-edit"
-                text: ""
+                text: "\n\n\n Please Choose a Date from the Menu"
                 on_touch_up: root.save_note()
 
             
-            MDFloatingActionButton:
-                id: note_button
-                icon: "book-cross"
-                elevation: 0
-                on_release:
-                    nav_drawer.set_state("open")
-
-
-        MDBottomAppBar:
-
-            MDTopAppBar:
-                type: "bottom"
-                icon: "information-variant"
-                mode: "end"
-                on_action_button: root.about()
-                Image: 
-                    source: "logo_nobg.png"
-                    allow_stretch: True
-                    keep_ratio: False
-                    size_hint: None, None
-                    width: 200
-                    height: 70
+        MDTopAppBar:
+            Image: 
+                source: "logo_nobg.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: 200
+                height: 70
 
     MDNavigationDrawer:
         id: nav_drawer
