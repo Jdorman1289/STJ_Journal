@@ -117,7 +117,7 @@ One thing you are thankful for tonight:
 
 
     def open_passage(self, book, chapter):
-        webbrowser.open_new_tab(f"https://www.blueletterbible.org/nasb20/{book}/{chapter}/1/s_936001")
+        webbrowser.open_new_tab(f"https://www.blueletterbible.org/nasb95/{book}/{chapter}/1/s_936001")
 
 
 class WindowManager(ScreenManager):
