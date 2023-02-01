@@ -96,12 +96,11 @@ One thing you are thankful for tonight:
 
 
         """
+        self.ids.journal_questions_text.text = starting_text
+
         for key, value in persistent_notes.items():
             if key == which_day:
                 self.ids.journal_questions_text.text = value
-
-        if self.ids.journal_questions_text.text == "":
-            self.ids.journal_questions_text.text = starting_text
 
     def save_note(self):
 
