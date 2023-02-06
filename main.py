@@ -10,6 +10,10 @@ try:
     persistent_notes = json.load(file)
 except FileNotFoundError:
     persistent_notes = {}
+except IOError:
+    print('Unable to read the file')
+except json.decoder.JSONDecodeError:
+    print('Unable to decode the file')
 
 day_selected = ""
 
