@@ -8,7 +8,7 @@ import webbrowser
 try:
     file = open('notes.json', 'r')
     persistent_notes = json.load(file)
-except:
+except FileNotFoundError:
     persistent_notes = {}
 
 day_selected = ""
@@ -112,8 +112,9 @@ One thing you are thankful for tonight:
             f.write(json_notes)
             f.close
 
-        except:
-            pass
+        except Exception as e:
+            print(e)
+
 
 
     def open_passage(self, book, chapter):
