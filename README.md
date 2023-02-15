@@ -1,6 +1,6 @@
-# Simple Journal App
+# Stronger Together Journal App
 
-A simple journal app that allows you to record your thoughts and experiences, along with prayer requests, Bible readings, and daily tasks. This app is built using Python, KivyMD, and JSON to store and retrieve notes.
+A simple journal app that allows you to record your thoughts and experiences, along with prayer requests, Bible readings, and daily tasks. This app is built using Python, KivyMD, and JSON to store and retrieve notes. This app was made to go along with the 2023 Bible readings of First Baptist Church in Brownsville, Texas. 
 
 ## Features
 
