@@ -20,7 +20,3 @@ A simple journal app that allows you to record your thoughts and experiences, al
 2. Fill out the template with your thoughts and experiences, prayer requests, Bible readings, and daily tasks.
 3. Click the "Open Passage" button to open a scripture passage on Blue Letter Bible.
 4. The app will automatically load the journal entry for the selected date the next time you open the app.
-
-## Contributing
-
-Contributions are welcome! Please feel free to open an issue or submit a pull request.
